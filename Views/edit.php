@@ -42,7 +42,7 @@ try {
       }
     }
     if (!empty($_POST['name']) && ($_POST['kana']) && ($_POST['email']) && ($_POST['body'])){
-      header("Location: contact.php", true, 307);
+      header("Location: index.php", true, 307);
       $stmt = $pdo->prepare('UPDATE contacts SET name = :name, kana = :kana, tel = :tel, email = :email, body = :body WHERE id = :id');
       $stmt->execute(array(':name' => $_POST['name'], ':kana' => $_POST['kana'], ':tel' => $_POST['tel'], ':email' => $_POST['email'] , ':body' => $_POST['body'], ':id' => $_POST['id']));
     }
@@ -138,7 +138,7 @@ $pdo->commit();
           <td class="contact-body"><input type="text" name="body" class="form-textarea" value="<?php if (!empty($result['body'])) echo(htmlspecialchars($result['body'], ENT_QUOTES, 'UTF-8'));?>"></td>
         </tr>
       </table>
-      <input class="contact-submit" type="submit" name = btn id =btn value="更新">
+      <input class="contact-submit" type="submit"  value="更新">
       <p class="contact-cancel"><a href="contact.php">キャンセル</a></p>
     </form>
   </div>

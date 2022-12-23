@@ -45,7 +45,7 @@ try {
       <tr><th class="contact-item">メールアドレス：</th><td class="contact-body"><?php if (!empty($result['email'])) echo(htmlspecialchars($result['email'], ENT_QUOTES, 'UTF-8'));?></td></tr>
       <tr><th class="contact-item">本文：</th><td class="contact-body"><?php if (!empty($result['body'])) echo(htmlspecialchars($result['body'], ENT_QUOTES, 'UTF-8'));?></td></tr>
       </table>
-      <input class="contact-submit" type="submit" name = btn id =btn value="削除">
+      <input class="contact-submit" type="submit"  value="削除">
       <p class="contact-cancel"><a href="contact.php">キャンセル</a></p>
     </form>
   </div>
