@@ -1,59 +1,6 @@
 <?php
-// データベースに接続
-$host = 'localhost';
-$user = 'root';
-$passwd = 'root';
-$dbname = 'casteria';
-
-$pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $passwd);
-$sql = 'SELECT * FROM contacts WHERE id = :id';
-$stmt = $pdo->prepare($sql);
-$stmt->execute(array(':id' => $_GET["id"]));
-$result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-try {
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-  $pdo->beginTransaction();
-    //  バリデーションの設定
-    $error_message = array();
-    if( isset($_POST["btn"] ) && $_POST["btn"] ){
-
-      if( !$_POST['name'] ) {
-        $error_message[] = "名前を入力してください";
-      } else if( mb_strlen($_POST['name']) > 10 ){
-        $error_message[] = "名前は10文字以内にしてください";
-      }
-      if(!$_POST['kana']) {
-        $error_message[] = "フリガナを入力してください";
-      } else if( mb_strlen($_POST['kana']) > 10 ) {
-        $error_message[] = "カナは10文字以内にしてください";
-      }
-      if(! preg_match("/^[0-9]+$/", $_POST['tel'])){
-        $error_message[] = "電話番号は数字のみで記入してください";
-      }
-      if(!$_POST['email']) {
-        $error_message[] = "メールアドレスを入力してください";
-      } else if(! filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)) {
-        $error_message[] = "正しく入力してください";
-      }
-      if(!$_POST['body']) {
-        $error_message[] = "問い合わせ内容を記述してください";
-      }
-    }
-    if (!empty($_POST['name']) && ($_POST['kana']) && ($_POST['email']) && ($_POST['body'])){
-      header("Location: index.php", true, 307);
-      $stmt = $pdo->prepare('UPDATE contacts SET name = :name, kana = :kana, tel = :tel, email = :email, body = :body WHERE id = :id');
-      $stmt->execute(array(':name' => $_POST['name'], ':kana' => $_POST['kana'], ':tel' => $_POST['tel'], ':email' => $_POST['email'] , ':body' => $_POST['body'], ':id' => $_POST['id']));
-    }
-
-$pdo->commit();
-    
-} catch (Exception $e) {
-    $pdo->rollBack();
-}
+require_once(ROOT_PATH .'Models/editmodel.php');
 ?>
-
 <script>
     window.onload = function(){
         const btn = document.getElementById('btn');
