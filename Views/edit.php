@@ -1,5 +1,5 @@
 <?php
-require_once(ROOT_PATH .'Models/editmodel.php');
+require_once(ROOT_PATH .'Controllers/editcontroller.php');
 ?>
 <script>
     window.onload = function(){
@@ -61,28 +61,28 @@ require_once(ROOT_PATH .'Models/editmodel.php');
       echo '</div>';
     }
   ?>
-    <form action="edit.php?id=<?php echo(htmlspecialchars($result['id']));?>" method="post">
-      <input type="hidden" name="id" value="<?php if (!empty($result['id'])) echo(htmlspecialchars($result['id'], ENT_QUOTES, 'UTF-8'));?>">
+    <form action="edit.php?id=<?php echo(htmlspecialchars($data['id']));?>" method="post">
+      <input type="hidden" name="id" value="<?php if (!empty($data['id'])) echo(htmlspecialchars($data['id'], ENT_QUOTES, 'UTF-8'));?>">
       <table  class="contact-table">
         <tr>
           <th class="contact-item"><label for="name">名前</label></th>
-          <td class="contact-body"><input type="text" name="name" class="form-text" value="<?php if (!empty($result['name'])) echo(htmlspecialchars($result['name'], ENT_QUOTES, 'UTF-8'));?>"></td>
+          <td class="contact-body"><input type="text" name="name" class="form-text" value="<?php if (!empty($data['name'])) echo(htmlspecialchars($data['name'], ENT_QUOTES, 'UTF-8'));?>"></td>
         </tr>
         <tr>
           <th class="contact-item"><label for="kana">フリガナ</label></th>
-          <td class="contact-body"><input type="text" name="kana" class="form-text" value="<?php if (!empty($result['kana'])) echo(htmlspecialchars($result['kana'], ENT_QUOTES, 'UTF-8'));?>"></td>
+          <td class="contact-body"><input type="text" name="kana" class="form-text" value="<?php if (!empty($data['kana'])) echo(htmlspecialchars($data['kana'], ENT_QUOTES, 'UTF-8'));?>"></td>
         </tr>
         <tr>
           <th class="contact-item"><label for="tel">電話番号</label></th>
-          <td class="contact-body"><input type="text" name="tel" class="form-text" value="<?php if (!empty($result['tel'])) echo(htmlspecialchars($result['tel'], ENT_QUOTES, 'UTF-8'));?>"></td>
+          <td class="contact-body"><input type="text" name="tel" class="form-text" value="<?php if (!empty($data['tel'])) echo(htmlspecialchars($data['tel'], ENT_QUOTES, 'UTF-8'));?>"></td>
         </tr>
         <tr>
           <th class="contact-item"><label for="email">メールアドレス</label></th>
-          <td class="contact-body"><input type="text" name="email" class="form-text" value="<?php if (!empty($result['email'])) echo(htmlspecialchars($result['email'], ENT_QUOTES, 'UTF-8'));?>"></td>
+          <td class="contact-body"><input type="text" name="email" class="form-text" value="<?php if (!empty($data['email'])) echo(htmlspecialchars($data['email'], ENT_QUOTES, 'UTF-8'));?>"></td>
         </tr>
         <tr>
           <th class="contact-item"><label for="body">問い合わせ内容</label></th>
-          <td class="contact-body"><input type="text" name="body" class="form-textarea" value="<?php if (!empty($result['body'])) echo(htmlspecialchars($result['body'], ENT_QUOTES, 'UTF-8'));?>"></td>
+          <td class="contact-body"><input type="text" name="body" class="form-textarea" value="<?php if (!empty($data['body'])) echo(htmlspecialchars($data['body'], ENT_QUOTES, 'UTF-8'));?>"></td>
         </tr>
       </table>
       <input class="contact-submit" type="submit"  value="更新">

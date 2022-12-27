@@ -1,5 +1,5 @@
 <?php
-require_once(ROOT_PATH .'Models/submitmodel.php');
+require_once(ROOT_PATH .'Controllers/submitcontroller.php');
 ?>
 <!DOCTYPE html>
 <html lang="ja">

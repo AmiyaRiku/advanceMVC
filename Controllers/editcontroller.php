@@ -1,6 +1,9 @@
 <?php
+require_once(ROOT_PATH .'Models/contactmodel.php');
+$id = $_GET["id"];
+$edit = new Edit($pdo, $id);
+$data = $edit->getData($id);
 
-$a ="";
 //  バリデーションの設定
 $error_message = array();
 if( isset($_POST["btn"] ) && $_POST["btn"] ){
@@ -29,6 +32,9 @@ if( isset($_POST["btn"] ) && $_POST["btn"] ){
 }
 if (!empty($_POST['name']) && ($_POST['kana']) && ($_POST['email']) && ($_POST['body'])){
   header("Location: index.php", true, 307);
-  $a = 1;
+  $edit = new Edit($pdo, $id);
+  $edit->index($id, $name, $kana, $tel, $email, $body) ;
 }
+
+
 ?>

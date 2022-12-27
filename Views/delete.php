@@ -1,5 +1,9 @@
 <?php
-require_once(ROOT_PATH .'Models/deletemodel.php');
+require_once(ROOT_PATH .'Models/contactmodel.php');
+$id = $_GET["id"];
+$delete = new Delete($pdo, $id);
+$result = $delete->getData($id);
+$delete->index();
 ?>
 <!DOCTYPE HTML>
 <html lang="ja">

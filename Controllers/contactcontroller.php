@@ -1,5 +1,7 @@
 <?php
 require_once(ROOT_PATH .'Models/contactmodel.php');
+$contact = new Contact($pdo);
+$result = $contact->index();
 
   // confirm.phpから戻ってきたときに値を保持
   session_start();
@@ -38,6 +40,7 @@ if( isset($_POST["btn"] ) && $_POST["btn"] ){
     $error_message[] = "問い合わせ内容を記述してください";
   }
 }
+
 if (!empty($_POST['name']) && ($_POST['kana']) && ($_POST['email']) && ($_POST['body'])){
   header("Location: confirm.php", true, 307);
 } else if(!empty($_GET['action']) && $_GET['action']=='error'){
