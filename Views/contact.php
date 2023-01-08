@@ -1,5 +1,7 @@
 <?php
-require_once(ROOT_PATH .'Controllers/contactController.php');
+require_once(ROOT_PATH .'Controllers/controller.php');
+$contactController = new contactController();
+$contactController->validate();
 ?>
 <script>
     window.onload = function(){
@@ -42,7 +44,6 @@ require_once(ROOT_PATH .'Controllers/contactController.php');
         });
     };
 </script>
-
 <!DOCTYPE html>
 <html lang="ja">
 <link rel="stylesheet" type="text/css" href="../css/kadai.css">
@@ -53,7 +54,7 @@ require_once(ROOT_PATH .'Controllers/contactController.php');
 <body>
   <div class="contact">
     <?php
-      if( $error_message ){
+      if(!empty($error_message)){
         echo '<div style="color:red;">';
         echo implode('<br>', $error_message );
         echo '</div>';
@@ -63,23 +64,23 @@ require_once(ROOT_PATH .'Controllers/contactController.php');
       <table  class="contact-table">
         <tr>
           <th class="contact-item"><label for="name">名前</label></th>
-          <td class="contact-body"><input type="text" id="name" name="name"  class="form-text" value="<?php if(isset($name)){echo $name;} ?>"></input></td>
+          <td class="contact-body"><input type="text" id="name" name="name"  class="form-text" value="<?php if(isset($name)){echo $form_data->$name;} ?>"></input></td>
         </tr>
         <tr>
           <th class="contact-item"><label for="kana">フリガナ</label></th>
-          <td class="contact-body"><input type="text" id="kana" name="kana"  class="form-text" value="<?php if(isset($kana)){echo $kana;} ?>"></input></td>
+          <td class="contact-body"><input type="text" id="kana" name="kana"  class="form-text" value="<?php if(isset($kana)){echo $form_data->$kana;} ?>"></input></td>
         </tr>
         <tr>
           <th class="contact-item"><label for="tel">電話番号</label></th>
-          <td class="contact-body"><input type="text" id="tel" name="tel"  class="form-text" value="<?php if(isset($tel)){echo $tel;} ?>"></input></td>
+          <td class="contact-body"><input type="text" id="tel" name="tel"  class="form-text" value="<?php if(isset($tel)){echo $form_data->$tel;} ?>"></input></td>
         </tr>
         <tr>
           <th class="contact-item"><label for="email">メールアドレス</label></th>
-          <td class="contact-body"><input type="text" id="email" name="email"  class="form-text" value="<?php if(isset($email)){echo $email;} ?>"></input></td>
+          <td class="contact-body"><input type="text" id="email" name="email"  class="form-text" value="<?php if(isset($email)){echo $form_data->$email;} ?>"></input></td>
         </tr>
         <tr>
           <th class="contact-item"><label for="body">問い合わせ内容</label></th>
-          <td class="contact-body"><input id="body" name="body"  class="form-textarea" value="<?php if(isset($body)){echo $body;} ?>"></input></td>
+          <td class="contact-body"><input id="body" name="body"  class="form-textarea" value="<?php if(isset($body)){echo $form_data->$body;} ?>"></input></td>
         </tr>
       </table>
       <input class="contact-submit" type="submit" name = btn id =btn value="送信">

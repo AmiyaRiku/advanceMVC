@@ -1,5 +1,6 @@
 <?php
-require_once(ROOT_PATH .'Controllers/confirmController.php');
+require_once(ROOT_PATH .'Controllers/controller.php');
+$form_data = new ConfirmController();
 
 ?>
 <!DOCTYPE HTML>
@@ -15,11 +16,11 @@ require_once(ROOT_PATH .'Controllers/confirmController.php');
         <h1 class="contact-ttl">確認画面</h1>
         <form action="submit.php" method="post">
             <table class="contact-table">
-            <tr><th class="contact-item">名前：</th><td class="contact-body"><?php echo $name; ?></td></tr>
-            <tr><th class="contact-item">フリガナ：</th><td class="contact-body"><?php echo $kana; ?></td></tr>
-            <tr><th class="contact-item">電話番号：</th><td class="contact-body"><?php echo $tel; ?></td></tr>
-            <tr><th class="contact-item">メールアドレス：</th><td class="contact-body"><?php echo $email; ?></td></tr>
-            <tr><th class="contact-item">本文：</th><td class="contact-body"><?php echo $body; ?></td></tr>
+            <tr><th class="contact-item">名前：</th><td class="contact-body"><?php echo $form_data->name; ?></td></tr>
+            <tr><th class="contact-item">フリガナ：</th><td class="contact-body"><?php echo $form_data->kana;?></td></tr>
+            <tr><th class="contact-item">電話番号：</th><td class="contact-body"><?php echo $form_data->tel;; ?></td></tr>
+            <tr><th class="contact-item">メールアドレス：</th><td class="contact-body"><?php echo $form_data->email; ?></td></tr>
+            <tr><th class="contact-item">本文：</th><td class="contact-body"><?php echo $form_data->body; ?></td></tr>
             </table>
             <input class="contact-submit" id="send" type="submit" value="登録">
         </form>
